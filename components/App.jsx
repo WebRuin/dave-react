@@ -21,23 +21,26 @@ function App({ children, routes }) {
     return (
       routes.filter(route => route.mapMenuTitle)
         .map((route, index, array) => (
-          <span key={index}>
-            <Link to={nextPath(route)}>{route.mapMenuTitle}</Link>
+          <li key={index}>
+            <Link className="nav-button" to={nextPath(route)}>{route.mapMenuTitle}</Link>
             {(index + 1) < array.length && ' / '}
-          </span>
+          </li>
         ))
     );
   }
 
-  const repoLink = 'https://github.com/rafrex/spa-github-pages';
-
   return (
     <div>
-      <h1>Single Page Apps for GitHub Pages</h1>
-      <a href={repoLink}>https://github.com/rafrex/spa-github-pages</a>
-      <nav>
-        {generateMapMenu()}
-      </nav>
+      <header className="header">
+        <div className="logo">
+          Dave Dubroff
+        </div>
+        <nav className="nav">
+          <ul>
+            {generateMapMenu()}
+          </ul>
+        </nav>
+      </header>
       {children}
       <div style={{ color: '#A0A0A0', fontSize: '14px', marginTop: '50px' }}>
         <a href="http://www.rafaelpedicini.com" className="extended-link">
